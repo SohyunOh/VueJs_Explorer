@@ -1,15 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <header/>
+    <div id="content" class="content">
+        <router-view></router-view> 
+        <!-- 라우터 부분만 재 로딩  -->
     </div>
-    <router-view />
   </div>
 </template>
 
+<script>
+// "" 로 경로 지정
+import header from "./components/layout/header.vue";
+
+// {} 사용
+export default {
+  // components: { header },
+  name : "App",
+  component : {
+    header,
+  },
+};
+</script>
+
+
+
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,5 +44,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
