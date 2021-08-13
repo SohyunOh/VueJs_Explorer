@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="index.css">
+    <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>템플릿문법</title>
+</head>
+<body>
+    <h2>[템플릿문법]</h2>
+    <h3> Vue는 템플릿을 가상 DOM 렌더링 함수로 컴파일합니다. </h3>
+    <h4> 렌더링 함수를 직접 작성할 수 있으며 선택사항으로 JSX를 지원합니다.</h4>
+
+    <hr>
+    <h3>
+        보간법(interpolation)
+    </h3>
+    <h2># 문자열</h2>
+    <div id=app>
+        <p>데이터 바인딩의 가장기본 형태는 "Mustache" 구문을 사용한 텍스트 보간입니다.</p>
+        <p> v-once 디렉티브를 사용하여 데이터 변경 시, </p>
+        <p>업데이트 되지 않는 일회성 보간을 수행할 수 있지만, 같은 노드의 바인딩에도 영향을 미친다는 점을 유의해야 합니다</p>
+        <span v-once> 다시는 변경하지 않습니다: 메시지:{{msg}}</span>
+    </div>
+<hr>
+
+    <h3>원시 htmL</h3>
+    <div>
+        <p>이중 중괄호(mustaches)는 HTML이 아닌 일반 텍스트로 데이터를 해석합니다. 
+            실제 HTML을 출력하려면 v-html 디렉티브를 사용해야 합니다.</p>
+
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+        <h5>사용자가 제공하는 콘텐츠에서는 v-html 사용금지 </h5>
+    </div>
+
+    <h2>#속성</h2>
+    <div v-bind:id="dynamicId"> </div>
+    <p>boolean 속성 사용할 때  true 인 경우 v-bind </p>
+    <button v-bimd:disabled="isButtonDisabled">Button</button>
+
+    <hr>
+    <p>javaScript 표현 지원</p>
+
+    <div>
+        {{ number +1}}
+        {{ ok ? 'Yes': 'No'}} 
+        {{ message.s}}
+        {{ message.split('').reverse().join('') }}
+    
+    </div>
+<div v-bind:id="'list-' + id"></div>
+<a href="index2.html">이전</a> .... <a href="index3.html">다음</a>
+<!--  computed 예제  -->
+<hr>
+<h2>computed 속성 </h2>
+<div id="example">
+    <p>원본 메시지 : {{ message}}</p>
+    <p>역순으로 표현한 메시지: "{{reverseMessage}}" </p>
+</div>
+
+<p>getter 함수로 사용</p>
+
+<h2>#computed 속성의 캐싱 vs 메소드</h2>
+<p>
+computed 속성 대신 methods 함수로 정의 가능.
+computed 속성은 종속 대상을 따라 저장(캐싱)된다는 것,
+message가 변경되지 않는 한, computed 속성인 reversedMessage를 여러 번 요청해도 계산을 다시 하지 않고 계산되어 있던 결과를 즉시 반환합니다.
+</p>
+
+
+<p>뒤집힌 메시지: "{{ reversedMessage() }}"</p>
+
+<hr>
+
+    <h2>computed 속성 vs watch 속성 </h2>
+        
+    <p>데이터 변경을 관찰 : watch 콜백보다 computed 속성을 사용 권장</p>
+
+    <div id= "demo">watch속성: {{fullName}}</div>
+    <div id= "demo2">computed속성: {{fullName}}</div>
+
+    <h2>#computed 속성의 setter 함수</h2>
+    <p>computed 속성은 기본적으로 getter 함수만 가지고 있지만, 필요한 경우 setter 함수를 만들어 쓸 수 있습니다.</p>
+
+    <div id= "demo3">setter 함수 : {{fullName}}</div>
+</body>
+
+<script src="index3.js"></script>
+
+</html>

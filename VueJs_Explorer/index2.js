@@ -61,8 +61,36 @@ var obj = {
     el: '#app',
     data: obj
   })
+//---------------------------------------------------------------
 
+  // 인스턴스 속성 및 메소드를 제공 , $ 접두어로 구분
 
+var data2 = { a : 1 }
+var vm2 = new Vue({
+    el2 : '#exaple',
+    data2 : data2
+})
+
+vm2.$data2 === data2
+vm2.$el2 === document.getElementById('exaple')
+
+//  $watch 는 인스턴스 메소드 입니다.
+vm2.$watch('a', function(newVal, oldVal){
+    // 'vm2.a'가 변경면경되면 호출됩니다.
+})
+
+//--------------------------------------------------------
+
+// 라이프사이클 훅 
+
+new Vue({
+    data: {
+        a: 1
+    },
+    created: function () {
+        console.log('a is:'+ this.a) // "a is:1"
+    }
+})
 
 
 

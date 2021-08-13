@@ -10,7 +10,7 @@
     <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <title>Document</title>
+    <title>Vue 인스터스</title>
 </head>
 
 <body>
@@ -45,11 +45,13 @@
     <h2> [ 데이터와 메서드 ] </h2>
 
         <div id="app">
-            <p>{{foo}}</p>
-              <!-- obj.foo는 더이상 변하지 않습니다! -->
+            <p>{ {{foo}} }</p>
+              <p> Object.freeze(obj): obj.foo는 더이상 변하지 않습니다! </p>
               <button v-on:click="foo = 'baz'">Change it</button>
         </div>
-
+<hr>
+end
+<span><a href="index3.html">next</a></span>
 
 </body>
 <script src="index2.js"></script>
