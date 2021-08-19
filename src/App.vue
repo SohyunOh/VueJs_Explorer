@@ -11,10 +11,19 @@
         <p v-for="item in user.skill" :key="item"> {{item}}</p>
       </li>
     </ul> -->
-    <h1>{{ count + 3 }}</h1>
+    <!-- <h1>{{ count + 3 }}</h1>
     <button v-on:click="addNumber(1)">증가</button>
     <button v-on:click="minusNumber">감소</button><br>
-    <button v-on:mouseover="addNumber(10)">마우스오버10증가</button>
+    <button v-on:mouseover="addNumber(10)">마우스오버10증가</button> -->
+    <h2>{{message}}</h2>
+    <!-- <button @click="greeting">인사하기</button>
+    <button @click="sayGoodbay">작별하기</button> -->
+    <button @click="addNumber( $event ,10)">10더하기</button>
+    <button @click="addNumber( $event ,100)">100더하기</button>
+    <br>
+    [마우스의 죄표값을 얻기 위해 이벤트가 필요]
+    <div @click="getMousPosition" class="box"></div>
+    
   </div>
 </template>
     
@@ -47,12 +56,25 @@ export default {
         },
       ],
       count: 0,
+      message:"",
     };
   },
   methods: {
-    addNumber(value){
- console.log(value)
-      this.count = this.count+ value;
+    getMousPosition(event){
+      console.log(event)
+      this.message = `마우스의 위치는 ${event.pageX},${event.pageY}입니다.`;
+    },
+    greeting(){
+      this.message = "안녕하세요"
+      
+    },
+    sayGoodbay(){
+      this.message = "잘가"
+    },
+    addNumber(e, value){
+      //이벤트 받기 위해 e.pageX값을 maseeage에 넣어봄
+      e.pageX
+      this.message = `마우스 좌표 ${e.pageX} 와 ${value}는 ${e.pageX+ value}입니다.`;
     },
     minusNumber(){
       console.log(this)
@@ -92,5 +114,12 @@ input {
 }
 .not-good {
   text-decoration: line-through;
+}
+.box {
+  width: 300px;
+  height: 300px;
+  background: salmon;
+  margin-left: 25%;
+
 }
 </style>
