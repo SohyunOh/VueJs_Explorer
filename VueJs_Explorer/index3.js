@@ -62,7 +62,7 @@ var vm = new Vue({
     }
 })
 
-console.log(vm.fullName)
+
 
 var vm = new Vue({
     el: '#demo3',
@@ -87,6 +87,5 @@ var vm = new Vue({
 })
 
 
-console.log(vm.fullName)
 vm.fullName = 'John Doe'
 console.log(vm.fullName)
